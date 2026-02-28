@@ -1,0 +1,51 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Unit Converter</title>
+        <style>
+        body { 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            /* --- The Centering Magic --- */
+            display: flex;             /* 1. Activate Flexbox */
+            justify-content: center;    /* 2. Center horizontally */
+            align-items: center;        /* 3. Center vertically */
+            min-height: 100vh;          /* 4. Use the full screen height */
+            margin: 0;                  /* Remove default browser gaps */
+            background-color: #f4f4f4; 
+        }
+
+        .container { 
+            background: white;
+            border: 2px solid black; 
+            padding: 20px; 
+            width: 350px; 
+            border-radius: 10px; 
+            box-shadow: 5px 5px 0px #000; /* Adds that cool "retro" shadow */
+        }
+
+        nav { margin-bottom: 15px; }
+        nav a { margin-right: 15px; text-decoration: none; color: black; font-weight: bold; }
+        nav a.active { color: blue; border-bottom: 2px solid blue; }
+        
+        input, select { width: 100%; padding: 8px; margin: 10px 0; border: 2px solid black; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; border: 2px solid black; background: white; cursor: pointer; border-radius: 5px; font-weight: bold; margin-top: 10px; }
+        button:hover { background: #e0e0e0; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Unit Converter</h1>
+            <nav>
+                <a href="{% url 'length_converter' %}" class="{% block active_length %}{% endblock %}">Length</a>
+                <a href="{% url 'weight_converter' %}" class="{% block active_weight %}{% endblock %}">Weight</a>
+                <a href="{% url 'temperature_converter' %}" class="{% block active_temp %}{% endblock %}">Temperature</a>
+            </nav>
+            <hr>
+
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+    </html>

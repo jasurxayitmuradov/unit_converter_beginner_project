@@ -1,0 +1,50 @@
+{% extends 'converter/base.html' %}
+
+{% block active_length %}active{% endblock %} 
+  
+{% block content %}
+    {% if not result %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Enter the length to convert</label>
+                <input type="number" name="value" step="any" required placeholder="0">
+            </div>
+
+            <div class="form-group">
+                <label>Unit to Convert from</label>
+                <select name="from_unit">
+                    <option value="millimeter">millimeter</option>
+                    <option value="centimeter">centimeter</option>
+                    <option value="meter">meter</option>
+                    <option value="kilometer">kilometer</option>
+                    <option value="inch">inch</option>
+                    <option value="foot">foot</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Unit to Convert to</label>
+                <select name="to_unit">
+                    <option value="millimeter">millimeter</option>
+                    <option value="centimeter">centimeter</option>
+                    <option value="meter">meter</option>
+                    <option value="kilometer">kilometer</option>
+                    <option value="inch">inch</option>
+                    <option value="foot">foot</option>
+                </select>
+            </div>
+
+            <button type="submit">Convert</button>
+        </form>
+    {% else %}
+        <p>Result of your calculation</p>
+        <div class="result-text">
+            {{ original_value }} {{ from_unit }} = {{ result|stringformat:".2f" }} {{ to_unit }}
+        </div>
+        
+        <a href="{% url 'length_converter' %}">
+            <button type="button">Reset</button>
+        </a>
+    {% endif %}
+{% endblock %}

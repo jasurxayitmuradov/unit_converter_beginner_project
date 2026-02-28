@@ -1,0 +1,48 @@
+{% extends 'converter/base.html' %}
+
+{% block active_weight %}active{% endblock %} 
+ 
+{% block content %}
+    {% if not result %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Enter the weight to convert</label>
+                <input type="number" name="value" step="any" required placeholder="0">
+            </div>
+
+            <div class="form-group">
+                <label>Unit to Convert from</label>
+                <select name="from_unit">
+                    <option value="milligram">milligram</option>
+                    <option value="gram">gram</option>
+                    <option value="kilogram">kilogram</option>
+                    <option value="ounce">ounce</option>
+                    <option value="pound">pound</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Unit to Convert to</label>
+                <select name="to_unit">
+                    <option value="milligram">milligram</option>
+                    <option value="gram">gram</option>
+                    <option value="kilogram">kilogram</option>
+                    <option value="ounce">ounce</option>
+                    <option value="pound">pound</option>
+                </select>
+            </div>
+
+            <button type="submit">Convert</button>
+        </form>
+    {% else %}
+        <p>Result of your calculation</p>
+        <div class="result-text">
+            {{ original_value }} {{ from_unit }} = {{ result|stringformat:".2f" }} {{ to_unit }}
+        </div>
+        
+        <a href="{% url 'weight_converter' %}">
+            <button type="button">Reset</button>
+        </a>
+    {% endif %}
+{% endblock %}
