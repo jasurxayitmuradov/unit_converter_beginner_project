@@ -66,28 +66,3 @@ Now open your browser and go to `http://127.0.0.1:8000/`.
 * Writing logic for mathematical conversions.
 * Basic CSS styling and layout centering.
 
-## 📝 Author
-
-[Your Name]
-
-```
-
----
-
-### Pro-Tips for your GitHub Repository:
-
-* **Add a .gitignore:** To keep your repo clean, create a file named `.gitignore` and add these lines so you don't upload unnecessary files:
-    ```text
-    venv/
-    *.pyc
-    __pycache__/
-    db.sqlite3
-    ```
-* **Screenshot:** Take a screenshot of your beautiful centered converter and name it `screenshot.png`. You can then add it to your README by adding this line:
-    `![Screenshot](screenshot.png)`
-
-
-
-**Would you like me to help you write a "Technical Guide" for your students that explains how the `views.py` math works?**
-
-```
